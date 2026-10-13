@@ -1,0 +1,11 @@
+services:
+  detector:
+    build: .
+    env_file: .env
+    ports: ["8000:8000"]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+    # Escala horizontal: `docker compose up --scale detector=3` atrás de um proxy/balanceador
+    # (a aplicação é stateless; para rate limit global troque o limitador por Redis).

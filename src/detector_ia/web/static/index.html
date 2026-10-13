@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detector de I.A. em documentos .docx</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Detector de I.A. em documentos .docx</h1>
+    <details id="keybox"><summary>Chave de API</summary>
+      <input id="apikey" type="password" autocomplete="off" placeholder="X-API-Key (se exigida)">
+    </details>
+  </header>
+
+  <main>
+    <label id="drop" for="file">
+      <strong>Clique ou arraste um arquivo .docx aqui</strong>
+      <span id="status" role="status"></span>
+    </label>
+    <input id="file" type="file" accept=".docx" hidden>
+
+    <section id="result" hidden>
+      <div class="summary">
+        <div class="gauge"><div id="marker"></div></div>
+        <p><span id="score"></span> — <strong id="verdict"></strong></p>
+        <ul id="warnings" class="warn"></ul>
+        <div class="actions">
+          <button id="dl-txt" type="button">Baixar relatório (.txt)</button>
+          <button id="dl-json" type="button">Baixar JSON</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article>
+          <h2>Texto (clique nas frases coloridas)</h2>
+          <div id="doc" class="doc"></div>
+        </article>
+        <aside>
+          <h2>Indicadores</h2>
+          <table id="metrics"><thead><tr><th>Indicador</th><th>Valor</th><th>Sinal</th></tr></thead><tbody></tbody></table>
+          <h2>Detalhes</h2>
+          <div id="detail" class="detail">Selecione um trecho ou indicador.</div>
+          <h2>Sugestões gerais</h2>
+          <ul id="advice"></ul>
+          <h2>Trechos sinalizados</h2>
+          <ol id="flags" class="flags"></ol>
+        </aside>
+      </div>
+    </section>
+    <p class="note">Análise heurística: indica probabilidade, não prova de autoria. Os documentos não são armazenados.</p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
